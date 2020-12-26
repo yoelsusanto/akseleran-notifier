@@ -21,7 +21,6 @@ func GetAkseleranCampaign() (*models.AkseleranResponse, error) {
 	query := req.URL.Query()
 	query.Add("campaign_status", "OPEN_CAMPAIGN")
 	query.Add("campaign_type", "P2P_BUSINESS,P2P_ONLINE_MERCHANT,P2P_LOAN_PURCHASE,P2P_EMPLOYEE_LOAN,P2P_INVOICE_FINANCING,P2P_RECEIVEABLE_FINANCING,P2P_CAPEX_FINANCING,P2P_INVENTORY_FINANCING,P2P_PORTFOLIO_FINANCING")
-	query.Add("location", "front")
 	query.Add("min_installment_range", "0")
 	query.Add("max_installment_range", "99")
 	query.Add("min_interest_range", "0")
