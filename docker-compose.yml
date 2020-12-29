@@ -1,0 +1,11 @@
+version: '3'
+services:
+  akseleran-notifier:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    image: akseleran-notifier
+    container_name: akseleran-notifier
+    restart: unless-stopped
+    volumes:
+      - ./env:/go/src/akseleran-notifier/
