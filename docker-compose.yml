@@ -8,4 +8,4 @@ services:
     container_name: akseleran-notifier
     restart: unless-stopped
     volumes:
-      - ./env:/go/src/akseleran-notifier/
+      - ./.env:/app/.env
