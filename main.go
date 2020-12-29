@@ -17,7 +17,7 @@ import (
 func main() {
 	cfg, err := config.ReadConfig()
 	if err != nil {
-		os.Exit(1)
+		defaultlog.Fatalf("Failed to read config: %+v", err)
 	}
 
 	log, err := logwrapper.CreateLogger(&logwrapper.Options{ServiceName: cfg.General.ServiceName, Environment: cfg.General.Environment})
