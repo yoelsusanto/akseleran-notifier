@@ -3,11 +3,12 @@ package jobs
 import (
 	"context"
 	"fmt"
+	"log"
+	"strconv"
+
 	"github.com/go-redis/redis/v8"
 	"github.com/sirupsen/logrus"
 	"github.com/yoelsusanto/akseleran-notifier/internal"
-	"log"
-	"strconv"
 )
 
 func CreateNewAkseleranCampaignHandler(deps *JobDependencies) func() {
@@ -58,7 +59,10 @@ func CreateNewAkseleranCampaignHandler(deps *JobDependencies) func() {
 				log.Println(err)
 			}
 
-			err = discordModule.SendMessageToAkseleranChannel(fmt.Sprintf("```%s```", message))
+			messageInBlock := fmt.Sprintf("```%s```", message)
+			messageWithMention := discordModule.AddMentionEveryOne(messageInBlock)
+
+			err = discordModule.SendMessageToAkseleranChannel(messageWithMention)
 			if err != nil {
 				log.Println(err)
 			}
