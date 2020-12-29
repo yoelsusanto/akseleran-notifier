@@ -1,6 +1,7 @@
 package discord
 
 import (
+	"fmt"
 	"github.com/bwmarrin/discordgo"
 	"github.com/sirupsen/logrus"
 	"github.com/yoelsusanto/akseleran-notifier/config"
@@ -42,4 +43,9 @@ func (m *Module) SendMessageToAkseleranChannel(message string) error {
 		return err
 	}
 	return nil
+}
+
+func (m *Module) AddMentionEveryOne(message string) string {
+	mentionPart := fmt.Sprintf("@everyone")
+	return message + mentionPart
 }
