@@ -8,6 +8,7 @@ import (
 type Options struct {
 	ServiceName string
 	Environment string
+	LogPath		string
 }
 
 type StandardLogger struct {
@@ -15,9 +16,15 @@ type StandardLogger struct {
 }
 
 func CreateLogger(opts *Options) (*StandardLogger, error) {
+	logFile, err := os.OpenFile(opts.LogPath, os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
+	if err != nil {
+		return nil, err
+	}
+
 	baseLogger := logrus.New()
 	baseLogger.Formatter = &logrus.JSONFormatter{}
 	baseLogger.SetReportCaller(true)
+	baseLogger.SetOutput(logFile)
 
 	hostname, err := os.Hostname()
 	if err != nil {

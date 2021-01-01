@@ -20,7 +20,7 @@ func main() {
 		defaultlog.Fatalf("Failed to read config: %+v", err)
 	}
 
-	log, err := logwrapper.CreateLogger(&logwrapper.Options{ServiceName: cfg.General.ServiceName, Environment: cfg.General.Environment})
+	log, err := logwrapper.CreateLogger(&logwrapper.Options{ServiceName: cfg.General.ServiceName, Environment: cfg.General.Environment, LogPath: cfg.General.LogPath})
 	if err != nil {
 		defaultlog.Fatalf("Failed to initiate logger: %+v", err)
 	}

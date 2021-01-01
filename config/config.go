@@ -28,6 +28,7 @@ type ObsScene struct {
 type GeneralConfig struct {
 	ServiceName string `mapstructure:"service_name"`
 	Environment string `mapstructure:"environment"`
+	LogPath 	string `mapstructure:"log_path"`
 }
 
 type Config struct {
